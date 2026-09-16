@@ -1,0 +1,15 @@
+[project]
+name = "fastapi-blog"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "m-ahsan-bilal", email = "ahsan123.bilal@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "aiosqlite>=0.22.1",
+    "fastapi[standard]>=0.141.1",
+    "greenlet>=3.5.5",
+    "sqlalchemy>=2.0.52",
+]

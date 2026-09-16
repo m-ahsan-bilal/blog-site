@@ -1,0 +1,55 @@
+from datetime import datetime
+from pydantic import BaseModel, Field, ConfigDict, EmailStr
+
+
+
+
+
+
+class UserBase(BaseModel):
+    username: str = Field(min_length=1, max_length=50)
+    email: EmailStr  = Field(min_length=1, max_length=120)
+    image_file: str | None = None
+
+class UserUpdate(BaseModel):
+    username: str | None = Field(default=None, min_length=1, max_length=50)
+    email: EmailStr  = Field(default=None, min_length=1, max_length=120)
+    image_file: str | None = Field(default=None, min_length=1, max_length=200)
+
+
+
+class UserCreate(UserBase):
+    pass
+
+class UserResponse(UserBase):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    image_file:str | None
+    image_path: str
+
+
+
+class PostBase(BaseModel):
+    title: str = Field(min_length=1, max_length=100)
+    content: str = Field(min_length=1)
+
+
+class PostUpdate(BaseModel):
+    title: str = Field(default=None, min_length=1, max_length=100)
+    content: str = Field(default=None, min_length=1)
+
+
+class PostCreate(PostBase):
+    user_id: int #temporary solution, will be replaced with author field in the future
+
+
+
+class PostResponse(PostBase):
+    model_config = ConfigDict(from_attributes=True)
+
+    id : int
+    user_id: int
+    date_posted: datetime
+    author: UserResponse
+    
