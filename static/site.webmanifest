@@ -1,7 +1,7 @@
 {
   "name": "FastAPI Blog",
   "short_name": "FastAPI Blog",
-  "description": "FastAPI Tutorial",
+  "description": "FastAPI blog site as tutorial of backend",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
