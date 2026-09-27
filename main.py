@@ -81,7 +81,7 @@ async def user_posts_page(
     user_id: int,
     db: Annotated[AsyncSession, Depends(get_db)],
 ):
-    result = await db.execute(select(models.User).where(models.User.id == user_id)).order_by(models.Post.date_posted.desc()),
+    result = await db.execute(select(models.User).where(models.User.id == user_id))
     user = result.scalars().first()
     if not user:
         raise HTTPException(
@@ -120,8 +120,17 @@ async def register_page(request: Request):
         "register.html",
         {"title": "Register"},
     )
+
+
+@app.get("/account", include_in_schema=False)
+async def account_page(request: Request):
+    return templates.TemplateResponse(
+        request,
+        "account.html",
+        {"title": "Account"},
+    )
+
  
-    
     
     
 

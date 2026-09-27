@@ -48,7 +48,7 @@ class PostUpdate(BaseModel):
 
 
 class PostCreate(PostBase):
-    user_id: int #temporary solution, will be replaced with author field in the future
+    pass
 
 
 
